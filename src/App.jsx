@@ -3,12 +3,8 @@ import AppShell from "./components/layout/AppShell";
 import Header from "./components/layout/Header";
 import Tabs from "./components/layout/Tabs";
 import AppRouter from "./Router";
-
-const STORAGE_KEYS = {
-  theme: "sysnavy_theme",
-  people: "sysnavy_people",
-  roles: "sysnavy_roles",
-};
+import { createBackupPayload, downloadBackup, parseBackupPayload } from "./actions/backup";
+import { STORAGE_KEYS, getInitialTheme, loadFromStorage, saveToStorage } from "./actions/storage";
 
 const emptyPerson = {
   id: "",
@@ -27,33 +23,6 @@ const emptyRole = {
   pessoaId: "",
 };
 
-function safeParse(value, fallback) {
-  if (!value) return fallback;
-  try {
-    return JSON.parse(value);
-  } catch {
-    return fallback;
-  }
-}
-
-function loadFromStorage(key, fallback) {
-  if (typeof window === "undefined") return fallback;
-  return safeParse(window.localStorage.getItem(key), fallback);
-}
-
-function saveToStorage(key, value) {
-  if (typeof window === "undefined") return;
-  window.localStorage.setItem(key, JSON.stringify(value));
-}
-
-function getInitialTheme() {
-  const stored = loadFromStorage(STORAGE_KEYS.theme, null);
-  if (stored === "light" || stored === "dark") return stored;
-  if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    return "dark";
-  }
-  return "light";
-}
 
 function createId() {
   if (typeof crypto !== "undefined" && crypto.randomUUID) return crypto.randomUUID();
@@ -227,11 +196,43 @@ function App() {
     setIsRoleModalOpen(true);
   }
 
+  function handleBackupSave() {
+    const payload = createBackupPayload({ theme, people, roles });
+    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+    downloadBackup(payload, `sysnavy-backup-${timestamp}.json`);
+  }
+
+  function handleBackupLoad() {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "application/json,.json";
+    input.onchange = async () => {
+      const file = input.files?.[0];
+      if (!file) return;
+      const confirmed = window.confirm(
+        "Importar backup? Isso substituirá todos os dados atuais.",
+      );
+      if (!confirmed) return;
+      const text = await file.text();
+      const imported = parseBackupPayload(text);
+      setPeople(imported.people);
+      setRoles(imported.roles);
+      setTheme(imported.theme);
+      resetPersonForm();
+      resetRoleForm();
+      setIsPersonModalOpen(false);
+      setIsRoleModalOpen(false);
+    };
+    input.click();
+  }
+
   return (
     <AppShell>
       <Header
         theme={theme}
         onToggleTheme={() => setTheme((prev) => (prev === "dark" ? "light" : "dark"))}
+        onBackupSave={handleBackupSave}
+        onBackupLoad={handleBackupLoad}
       />
       <Tabs />
 

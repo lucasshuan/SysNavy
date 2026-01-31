@@ -44,7 +44,15 @@ export default function PeopleTable({ people, onEdit, onDelete }) {
     },
   ];
 
-  return <DataTable columns={columns} data={people} />;
+  return (
+    <DataTable
+      columns={columns}
+      data={people}
+      tableId="people"
+      searchKeys={["nip", "nome", "documento", "assuncao"]}
+      searchPlaceholder="Buscar pessoa"
+    />
+  );
 }
 
 

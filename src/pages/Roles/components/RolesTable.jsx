@@ -67,6 +67,14 @@ export default function RolesTable({ roles, people, onEdit, onDelete }) {
     },
   ];
 
-  return <DataTable columns={columns} data={roles} />;
+  return (
+    <DataTable
+      columns={columns}
+      data={roles}
+      tableId="roles"
+      searchKeys={["codigo", "nome", "posto", "profissao"]}
+      searchPlaceholder="Buscar cargo"
+    />
+  );
 }
 
