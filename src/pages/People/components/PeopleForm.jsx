@@ -1,11 +1,4 @@
-function Field({ label, children }) {
-  return (
-    <label className="grid gap-2 text-sm font-semibold">
-      {label}
-      {children}
-    </label>
-  );
-}
+﻿import Field from "../../../components/ui/Field";
 
 export default function PeopleForm({
   formValues,
@@ -83,3 +76,4 @@ export default function PeopleForm({
     </form>
   );
 }
+

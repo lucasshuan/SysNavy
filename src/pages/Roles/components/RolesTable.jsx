@@ -1,5 +1,5 @@
-import DataTable from "../../components/ui/DataTable";
-import RowActions from "../../components/ui/RowActions";
+﻿import DataTable from "../../../components/ui/DataTable";
+import RowActions from "../../../components/ui/RowActions";
 
 export default function RolesTable({ roles, people, onEdit, onDelete }) {
   const peopleById = new Map(people.map((person) => [person.id, person]));
@@ -61,3 +61,4 @@ export default function RolesTable({ roles, people, onEdit, onDelete }) {
 
   return <DataTable columns={columns} data={roles} />;
 }
+

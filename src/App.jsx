@@ -1,10 +1,8 @@
 ﻿import { useEffect, useMemo, useState } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
 import AppShell from "./components/layout/AppShell";
 import Header from "./components/layout/Header";
 import Tabs from "./components/layout/Tabs";
-import PeoplePage from "./pages/people/PeoplePage";
-import RolesPage from "./pages/roles/RolesPage";
+import AppRouter from "./Router";
 
 const STORAGE_KEYS = {
   theme: "sysnavy_theme",
@@ -236,53 +234,37 @@ function App() {
       />
       <Tabs />
 
-      <Routes>
-        <Route path="/" element={<Navigate to="/pessoas" replace />} />
-        <Route
-          path="/pessoas"
-          element={
-            <PeoplePage
-              people={people}
-              formValues={personForm}
-              editingId={editingPersonId}
-              isFormOpen={isPersonModalOpen}
-              onCreate={startNewPerson}
-              onCloseForm={closePersonModal}
-              onSubmit={handlePersonSubmit}
-              onFieldChange={handlePersonFieldChange}
-              onEdit={startEditPerson}
-              onDelete={deletePerson}
-            />
-          }
-        />
-        <Route
-          path="/cargos"
-          element={
-            <RolesPage
-              roles={roles}
-              people={people}
-              formValues={roleForm}
-              editingId={editingRoleId}
-              isFormOpen={isRoleModalOpen}
-              assigneeQuery={assigneeQuery}
-              assigneeOpen={assigneeOpen}
-              assigneeOptions={assigneeOptions}
-              assignedLabel={assignedLabel}
-              onCreate={startNewRole}
-              onCloseForm={closeRoleModal}
-              onSubmit={handleRoleSubmit}
-              onFieldChange={handleRoleFieldChange}
-              onEdit={startEditRole}
-              onDelete={deleteRole}
-              onAssigneeInput={handleAssigneeInput}
-              onAssigneeFocus={() => setAssigneeOpen(true)}
-              onAssigneeBlur={() => setTimeout(() => setAssigneeOpen(false), 120)}
-              onAssigneeSelect={selectAssignee}
-              getPersonLabel={personLabel}
-            />
-          }
-        />
-      </Routes>
+      <AppRouter
+        people={people}
+        roles={roles}
+        personForm={personForm}
+        roleForm={roleForm}
+        editingPersonId={editingPersonId}
+        editingRoleId={editingRoleId}
+        isPersonModalOpen={isPersonModalOpen}
+        isRoleModalOpen={isRoleModalOpen}
+        assigneeQuery={assigneeQuery}
+        assigneeOpen={assigneeOpen}
+        assigneeOptions={assigneeOptions}
+        assignedLabel={assignedLabel}
+        onCreatePerson={startNewPerson}
+        onClosePersonForm={closePersonModal}
+        onSubmitPerson={handlePersonSubmit}
+        onChangePersonField={handlePersonFieldChange}
+        onEditPerson={startEditPerson}
+        onDeletePerson={deletePerson}
+        onCreateRole={startNewRole}
+        onCloseRoleForm={closeRoleModal}
+        onSubmitRole={handleRoleSubmit}
+        onChangeRoleField={handleRoleFieldChange}
+        onEditRole={startEditRole}
+        onDeleteRole={deleteRole}
+        onAssigneeInput={handleAssigneeInput}
+        onAssigneeFocus={() => setAssigneeOpen(true)}
+        onAssigneeBlur={() => setTimeout(() => setAssigneeOpen(false), 120)}
+        onAssigneeSelect={selectAssignee}
+        getPersonLabel={personLabel}
+      />
     </AppShell>
   );
 }

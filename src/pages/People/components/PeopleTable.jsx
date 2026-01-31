@@ -1,5 +1,5 @@
-import DataTable from "../../components/ui/DataTable";
-import RowActions from "../../components/ui/RowActions";
+﻿import DataTable from "../../../components/ui/DataTable";
+import RowActions from "../../../components/ui/RowActions";
 
 export default function PeopleTable({ people, onEdit, onDelete }) {
   const columns = [
@@ -46,3 +46,4 @@ export default function PeopleTable({ people, onEdit, onDelete }) {
 
   return <DataTable columns={columns} data={people} />;
 }
+
