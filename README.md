@@ -8,8 +8,7 @@ Sistema portátil para gestão de pessoas e cargos, com dados salvos localmente 
 ## Funcionalidades
 
 - Cadastro, edição e exclusão de pessoas.
-- Cadastro, edição e exclusão de cargos
-- Vincular pessoa a um cargo.
+- Cadastro, edição e exclusão de cargos e vincular pessoa.
 - Tema claro/escuro.
 - Backup local (exportar/importar).
 - Busca, paginação e densidade da tabela.
