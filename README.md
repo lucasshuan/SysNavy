@@ -1,8 +1,7 @@
 <p align="center">
-  <img src="src/assets/logo.svg" alt="SysNavy" width="72" />
+  <img src="logo.png" alt="SysNavy" width="72" />
+  <h1>SysNavy</h1>
 </p>
-
-# SysNavy
 
 Sistema portátil para gestão de pessoas e cargos, com dados salvos localmente no navegador.
 
