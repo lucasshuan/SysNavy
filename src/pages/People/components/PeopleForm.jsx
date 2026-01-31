@@ -1,4 +1,4 @@
-﻿import Field from "../../../components/ui/Field";
+import Field from "../../../components/ui/Field";
 
 export default function PeopleForm({
   formValues,
@@ -76,4 +76,5 @@ export default function PeopleForm({
     </form>
   );
 }
+
 

@@ -1,4 +1,4 @@
-﻿import DataTable from "../../../components/ui/DataTable";
+import DataTable from "../../../components/ui/DataTable";
 import RowActions from "../../../components/ui/RowActions";
 
 export default function PeopleTable({ people, onEdit, onDelete }) {
@@ -46,4 +46,5 @@ export default function PeopleTable({ people, onEdit, onDelete }) {
 
   return <DataTable columns={columns} data={people} />;
 }
+
 

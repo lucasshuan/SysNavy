@@ -4,7 +4,7 @@ export default function AssigneeAutocomplete({
   open,
   hasPeople,
   options,
-  selectedLabel,
+  currentLabel,
   onInput,
   onFocus,
   onBlur,
@@ -46,9 +46,9 @@ export default function AssigneeAutocomplete({
           )}
         </div>
       )}
-      {selectedLabel && (
+      {currentLabel && (
         <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
-          Selecionado: <span className="font-semibold">{selectedLabel}</span>
+          Atual cadastrado: <span className="font-semibold">{currentLabel}</span>
         </p>
       )}
     </div>

@@ -14,7 +14,7 @@ export default function AppRouter({
   assigneeQuery,
   assigneeOpen,
   assigneeOptions,
-  assignedLabel,
+  currentAssigneeLabel,
   onCreatePerson,
   onClosePersonForm,
   onSubmitPerson,
@@ -65,7 +65,7 @@ export default function AppRouter({
             assigneeQuery={assigneeQuery}
             assigneeOpen={assigneeOpen}
             assigneeOptions={assigneeOptions}
-            assignedLabel={assignedLabel}
+            currentAssigneeLabel={currentAssigneeLabel}
             onCreate={onCreateRole}
             onCloseForm={onCloseRoleForm}
             onSubmit={onSubmitRole}

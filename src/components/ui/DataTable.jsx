@@ -1,7 +1,7 @@
 export default function DataTable({ columns, data, rowKey = "id" }) {
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full text-left text-sm">
+      <table className="min-w-full text-left text-xs">
         <thead className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">
           <tr>
             {columns.map((column, index) => (

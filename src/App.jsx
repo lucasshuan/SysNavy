@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import AppShell from "./components/layout/AppShell";
 import Header from "./components/layout/Header";
 import Tabs from "./components/layout/Tabs";
@@ -90,6 +90,7 @@ function App() {
   const [editingRoleId, setEditingRoleId] = useState(null);
   const [assigneeQuery, setAssigneeQuery] = useState("");
   const [assigneeOpen, setAssigneeOpen] = useState(false);
+  const [currentAssigneeLabel, setCurrentAssigneeLabel] = useState("");
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
@@ -110,9 +111,6 @@ function App() {
     return people.filter((person) => personLabel(person).toLowerCase().includes(needle));
   }, [assigneeQuery, people]);
 
-  const assignedPerson = people.find((person) => person.id === roleForm.pessoaId);
-  const assignedLabel = assignedPerson ? personLabel(assignedPerson) : "";
-
   function resetPersonForm() {
     setPersonForm(emptyPerson);
     setEditingPersonId(null);
@@ -123,6 +121,7 @@ function App() {
     setEditingRoleId(null);
     setAssigneeQuery("");
     setAssigneeOpen(false);
+    setCurrentAssigneeLabel("");
   }
 
   function closePersonModal() {
@@ -182,7 +181,9 @@ function App() {
     setRoleForm(role);
     setEditingRoleId(role.id);
     const assigned = people.find((person) => person.id === role.pessoaId);
-    setAssigneeQuery(assigned ? personLabel(assigned) : "");
+    const assignedLabel = assigned ? personLabel(assigned) : "";
+    setAssigneeQuery(assignedLabel);
+    setCurrentAssigneeLabel(assignedLabel);
     setIsRoleModalOpen(true);
   }
 
@@ -246,7 +247,7 @@ function App() {
         assigneeQuery={assigneeQuery}
         assigneeOpen={assigneeOpen}
         assigneeOptions={assigneeOptions}
-        assignedLabel={assignedLabel}
+        currentAssigneeLabel={currentAssigneeLabel}
         onCreatePerson={startNewPerson}
         onClosePersonForm={closePersonModal}
         onSubmitPerson={handlePersonSubmit}
@@ -270,3 +271,4 @@ function App() {
 }
 
 export default App;
+

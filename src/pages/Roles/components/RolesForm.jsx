@@ -1,4 +1,4 @@
-﻿import AssigneeAutocomplete from "./AssigneeAutocomplete";
+import AssigneeAutocomplete from "./AssigneeAutocomplete";
 import Field from "../../../components/ui/Field";
 
 export default function RolesForm({
@@ -8,7 +8,7 @@ export default function RolesForm({
   assigneeQuery,
   assigneeOpen,
   assigneeOptions,
-  assignedLabel,
+  currentAssigneeLabel,
   onSubmit,
   onFieldChange,
   onCancelEdit,
@@ -73,7 +73,7 @@ export default function RolesForm({
         open={assigneeOpen}
         hasPeople={peopleCount > 0}
         options={assigneeOptions}
-        selectedLabel={assignedLabel}
+        currentLabel={currentAssigneeLabel}
         onInput={onAssigneeInput}
         onFocus={onAssigneeFocus}
         onBlur={onAssigneeBlur}
@@ -101,4 +101,5 @@ export default function RolesForm({
     </form>
   );
 }
+
 

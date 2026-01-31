@@ -1,4 +1,4 @@
-﻿import { Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import Modal from "../../../components/ui/Modal";
 import PeopleForm from "./PeopleForm";
 import PeopleTable from "./PeopleTable";
@@ -62,4 +62,5 @@ export default function PeopleSection({
     </section>
   );
 }
+
 

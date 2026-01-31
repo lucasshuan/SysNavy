@@ -1,4 +1,4 @@
-﻿import { Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import Modal from "../../../components/ui/Modal";
 import RolesForm from "./RolesForm";
 import RolesTable from "./RolesTable";
@@ -12,7 +12,7 @@ export default function RolesSection({
   assigneeQuery,
   assigneeOpen,
   assigneeOptions,
-  assignedLabel,
+  currentAssigneeLabel,
   onCreate,
   onCloseForm,
   onSubmit,
@@ -73,7 +73,7 @@ export default function RolesSection({
           assigneeQuery={assigneeQuery}
           assigneeOpen={assigneeOpen}
           assigneeOptions={assigneeOptions}
-          assignedLabel={assignedLabel}
+          currentAssigneeLabel={currentAssigneeLabel}
           onSubmit={onSubmit}
           onFieldChange={onFieldChange}
           onCancelEdit={onCloseForm}
@@ -87,4 +87,5 @@ export default function RolesSection({
     </section>
   );
 }
+
 
