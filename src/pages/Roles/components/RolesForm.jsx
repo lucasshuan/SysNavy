@@ -36,6 +36,7 @@ export default function RolesForm({
         <Field label="Nome">
           <input
             name="nome"
+            autoComplete="nome-cargo"
             value={formValues.nome}
             onChange={handleChange("nome")}
             placeholder="Diretor"

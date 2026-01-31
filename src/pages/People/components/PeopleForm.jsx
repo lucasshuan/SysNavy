@@ -26,6 +26,7 @@ export default function PeopleForm({
         <Field label="Nome">
           <input
             name="nome"
+            autoComplete="nome-pessoa"
             value={formValues.nome}
             onChange={handleChange("nome")}
             placeholder="João da Silva"

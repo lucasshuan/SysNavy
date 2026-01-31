@@ -1,16 +1,13 @@
 import { Moon, Save, Sun, Upload } from "lucide-react";
+import { ReactComponent as Logo } from "../../assets/logo.svg";
 
 export default function Header({ theme, onToggleTheme, onBackupSave, onBackupLoad }) {
   return (
     <header className="flex flex-wrap items-center justify-between gap-4">
       <div className="flex items-center gap-4">
-        <span
-          className="logo-mark h-12 w-12 text-slate-900 dark:text-slate-100"
+        <Logo
+          className="h-12 w-12 text-slate-900 dark:text-slate-100"
           aria-hidden="true"
-          style={{
-            WebkitMaskImage: `url(${process.env.PUBLIC_URL}/logo.svg)`,
-            maskImage: `url(${process.env.PUBLIC_URL}/logo.svg)`,
-          }}
         />
         <div>
           <p className="text-xs uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
