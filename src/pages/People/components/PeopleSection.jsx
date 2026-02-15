@@ -31,7 +31,7 @@ export default function PeopleSection({
             className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-slate-900"
           >
             <Plus className="h-4 w-4" />
-            Nova pessoa
+            Novo Tripulante
           </button>
         </div>
         {people.length === 0 ? (
